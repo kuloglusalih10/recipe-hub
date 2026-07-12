@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: recipe-hub-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: recipe_hub
+      POSTGRES_USER: recipe_hub
+      POSTGRES_PASSWORD: recipe_hub
+    ports:
+      - "5432:5432"
+    volumes:
+      - recipe-hub-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  recipe-hub-postgres-data:
